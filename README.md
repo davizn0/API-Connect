@@ -17,22 +17,22 @@ Disponibilizar uma API funcional, organizada e padronizada para que a equipe de 
 ## Estrutura do projeto
 
 api-connect/
-├── src/
-│ ├── server.js
-│ ├── app.js
-│ ├── routes/
-│ │ └── users.routes.js
-│ ├── controllers/
-│ │ └── users.controller.js
-│ ├── services/
-│ │ └── users.service.js
-│ ├── data/
-│ │ └── users.json
-│ └── middlewares/
-│ └── validateUser.js
-├── .env
-├── .gitignore
-└── package.json
+  src/
+    server.js
+    app.js
+    routes/
+        users.routes.js
+    controllers/
+        users.controller.js
+    services/
+        users.service.js
+    data/
+        users.json
+    middlewares/
+        validateUser.js
+    .env
+    .gitignore
+    package.json
 
 ## Como executar localmente
 
@@ -42,13 +42,13 @@ api-connect/
 ### Passo a passo
 
 1. Clone o repositório:
-```bash
-git clone https://github.com/davizn0/API-Connect.git
+```
+git clone https://github.com/davizn0/API-Connect
 cd API-Connect
 ```
 
 2. Instale as dependências:
-```bash
+```
 npm install
 ```
 
@@ -57,7 +57,7 @@ npm install
 PORT=3000
 
 4. Inicie o servidor em modo de desenvolvimento:
-```bash
+```
 npm run dev
 ```
 
@@ -67,24 +67,22 @@ npm run dev
 
 Todas as respostas seguem o envelope padronizado: `{ "data": ... }` para sucesso e `{ "error": "..." }` para falhas.
 
-| Método | Endpoint | Descrição | Corpo da requisição | Status de sucesso | Status de erro |
-|---|---|---|---|---|---|
-| GET | `/users` | Lista todos os usuários | — | 200 | — |
-| GET | `/users/:id` | Busca um usuário pelo ID | — | 200 | 404 (não encontrado) |
-| POST | `/users` | Cadastra um novo usuário | `{ "nome": "string", "email": "string" }` | 201 | 400 (dados inválidos) |
-| PUT | `/users/:id` | Atualiza um usuário existente | `{ "nome": "string", "email": "string" }` | 200 | 404 (não encontrado) / 400 (dados inválidos) |
-| DELETE | `/users/:id` | Remove um usuário existente | — | 204 | 404 (não encontrado) |
+GET - Lista todos os usuários
+GET - Busca um usuário pelo ID
+POST - Cadastra um novo usuário
+PUT - Atualiza um usuário existente
+DELETE - Remove um usuário existente
 
 ### Exemplo de requisição — Criar usuário
 
-```bash
+```
 curl -X POST http://localhost:3000/users \
   -H "Content-Type: application/json" \
   -d '{"nome":"Ana Silva","email":"ana.silva@email.com"}'
 ```
 
-**Resposta (201):**
-```json
+**Resposta:**
+```
 {
   "data": {
     "id": 1,
@@ -96,14 +94,14 @@ curl -X POST http://localhost:3000/users \
 
 ### Exemplo de requisição — Erro de validação
 
-```bash
+```
 curl -X POST http://localhost:3000/users \
   -H "Content-Type: application/json" \
   -d '{"nome":"Ana Silva"}'
 ```
 
-**Resposta (400):**
-```json
+**Resposta:**
+```
 {
   "error": "O campo \"email\" é obrigatório e deve ser um e-mail válido."
 }
