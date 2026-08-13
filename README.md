@@ -37,7 +37,7 @@ api-connect/
 ## Como executar localmente
 
 ### Pré-requisitos
-- Node.js instalado (versão 18 ou superior)
+- Node.js
 
 ### Passo a passo
 
